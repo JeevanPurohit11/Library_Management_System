@@ -88,3 +88,55 @@ public:
         cout << "Book added to Library Successfully.\n";
     }
 
+  // This funciton is for admin to remove books from the Library
+    void removeBook()
+    {
+        string title_of_book;
+        cin.ignore();
+        getline(cin, title_of_book);
+        auto it = books.find(title_of_book);
+        // finding the book into the unordered map using iterator and erasing it if found.
+        if (it != books.end())
+        {
+            books.erase(it);
+            cout << "Book removed from Library Successfully.\n";
+        }
+        else
+        {
+            cout << "There does not exist any book with bookname " << title_of_book << endl;
+        }
+    }
+};
+
+class User
+{
+public:
+    friend class Admin;                               // Admin class can access userRecord.
+    friend void searchBook(User &obj1, Admin &obj2);  // friend function to search any book used by both user and admin.
+    friend void issueBook(User &obj1, Admin &obj2);   // friend function to issue any book by user and to make entry to admin about it.
+    friend void returnBook(User &obj1, Admin &obj2);  // friend function to return any book by user and to make entry to admin about it.
+    friend void displayBook(User &obj1, Admin &obj2); // friend function to display all the books.
+};
+
+void Admin::bookStock()
+{
+    // Made a vector of class Book to add some books into the library.
+    vector<Book> booksToAdd;
+
+    booksToAdd.push_back(Book("The Great Gatsby", "F. Scott Fitzgerald", "Fiction", "ISBN123", 320, 5, "Penguin Books"));
+    booksToAdd.push_back(Book("1984", "George Orwell", "Science Fiction", "ISBN012", 328, 5, "Penguin Books"));
+    booksToAdd.push_back(Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "ISBN901", 310, 4, "Allen & Unwin"));
+    booksToAdd.push_back(Book("The Lord of the Rings", "J.R.R. Tolkien", "Fantasy", "ISBN234", 1178, 2, "Allen & Unwin"));
+    booksToAdd.push_back(Book("The Hunger Games", "Suzanne Collins", "Young Adult", "ISBN890", 374, 7, "Scholastic"));
+    booksToAdd.push_back(Book("Brave New World", "Aldous Huxley", "Science Fiction", "ISBN5678", 311, 3, "Chatto & Windus"));
+    booksToAdd.push_back(Book("The Alchemist", "Paulo Coelho", "Fiction", "ISBN9012", 208, 2, "HarperOne"));
+    booksToAdd.push_back(Book("Moby-Dick", "Herman Melville", "Classic", "ISBN3456", 585, 4, "Richard Bentley"));
+    booksToAdd.push_back(Book("The Kite Runner", "Khaled Hosseini", "Fiction", "ISBN7890", 371, 1, "Riverhead Books"));
+    booksToAdd.push_back(Book("The Great Expectations", "Charles Dickens", "Classic", "ISBN0123", 544, 1, "Chapman & Hall"));
+    booksToAdd.push_back(Book("The Odyssey", "Homer", "Epic Poetry", "ISBN4567", 442, 1, "Chapman & Hall"));
+
+    for (auto &itr : booksToAdd)
+    {
+        books[itr.title] = itr;
+    }
+}
