@@ -140,3 +140,39 @@ void Admin::bookStock()
         books[itr.title] = itr;
     }
 }
+void Admin::userdetails()
+{
+    cout << "USER               BOOK\n";
+    for (auto it : userRecord)
+    {
+        cout << it.first << "          " << it.second << endl;
+    }
+}
+
+// This function is for searching the book into the library.
+void searchBook(User &obj1, Admin &obj2)
+{
+    string title_of_book;
+    cout << "Enter Title of Book: ";
+    cin.ignore();
+    getline(cin, title_of_book);
+    // Using iterator to find into the unordered map
+    auto it = obj2.books.find(title_of_book);
+    if (it == obj2.books.end())
+    {
+        cout << "Book not found!!\n";
+    }
+    else
+    {
+        cout << "---------------------------------------------------------\n";
+        cout << "Book found\n";
+        cout << "Book Details:\n";
+        cout << "BOOK TITLE IS: " << it->second.title << endl;
+        cout << "BOOK AUTHOR IS: " << it->second.author << endl;
+        cout << "BOOK GENRE IS: " << it->second.genre << endl;
+        cout << "BOOK IDENTIFIER IS: " << it->second.isbn_identifier << endl;
+        cout << "NUMBER OF COPIES OF BOOK IS: " << it->second.numOfCopies << endl;
+        cout << "---------------------------------------------------------\n";
+    }
+}
+
