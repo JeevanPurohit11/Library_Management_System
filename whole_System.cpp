@@ -263,3 +263,99 @@ void displayBook(User &obj1, Admin &obj2)
         cout << "---------------------------------------------------------\n";
     }
 }
+int main()
+{
+    cout << "\n\n";
+    cout << "\t\t\t\t\t****         *****   ***********    ***********      *********     ***********   ****      ****\n";
+    cout << "\t\t\t\t\t****         *****   ***      ***   ***      ***    **       **    ***      ***   ****    **** \n";
+    cout << "\t\t\t\t\t****         *****   ***      ***   ***      ***   ***       ***   ***      ***    ****  ****  \n";
+    cout << "\t\t\t\t\t****         *****   ***      ***   ***      ***   ***       ***   ***      ***     ********   \n";
+    cout << "\t\t\t\t\t****         *****   ***********    ***********    *************   ***********        ****     \n";
+    cout << "\t\t\t\t\t****         *****   ***      ***   ***    **      ***       ***   ***    **          ****     \n";
+    cout << "\t\t\t\t\t**********   *****   ***      ***   ***     ***    ***       ***   ***     ***        ****     \n";
+    cout << "\t\t\t\t\t**********   *****   ***********    ***      ***   ***       ***   ***      ***       ****     \n";
+    cout << "\n";
+    Admin adm;
+    adm.bookStock();
+    User usr;
+    while (true)
+    {
+        cout << "PRESS 1 FOR ADMIN AND 2 FOR USER.\n";
+        int loginid;
+        cin >> loginid;
+        if (loginid == 1)
+        {
+            // Admin Login
+            cout << "Enter 1 to add new books to the Library.\n";
+            cout << "Enter 2 to remove books from the Library.\n";
+            cout << "Enter 3 to search for any book in the Library.\n";
+            cout << "Enter 4 for list of all the Books in the Library.\n";
+            cout << "Enter 5 to check the user details.\n";
+            int adminOption;
+            cin >> adminOption;
+            // A switch case for multiple functionalities to Admin.
+            switch (adminOption)
+            {
+            case 1:
+                adm.addBook();
+                break;
+            case 2:
+                adm.removeBook();
+                break;
+            case 3:
+                searchBook(usr, adm);
+                break;
+            case 4:
+                displayBook(usr, adm);
+                break;
+            case 5:
+                adm.userdetails();
+                break;
+            default:
+                cout << "Please select appropriate option\n";
+                break;
+            }
+        }
+        else if (loginid == 2)
+        {
+            cout << "Enter 1 to search for any books in the Library\n";
+            cout << "Enter 2 to issue any available books in the library\n";
+            cout << "Enter 3 to return any book to the library\n";
+            cout << "Enter 4 to see the available books in the library\n";
+            int useroption;
+            cin >> useroption;
+            // A switch case for multiple functionalities to User.
+            switch (useroption)
+            {
+            case 1:
+                searchBook(usr, adm);
+                break;
+
+            case 2:
+                issueBook(usr, adm);
+                break;
+
+            case 3:
+                returnBook(usr, adm);
+                break;
+
+            case 4:
+                displayBook(usr, adm);
+                break;
+
+            default:
+                break;
+            }
+        }
+        else
+        {
+            cout << "No Admin or User details found...Please try again!!!\n";
+        }
+        char exit;
+        cout << "Do you want to exit the program(Y/N): ";
+        cin >> exit;
+        if (exit == 'Y')
+            break;
+    }
+    return 0;
+}
