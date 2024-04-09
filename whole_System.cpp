@@ -248,3 +248,18 @@ void returnBook(User &obj1, Admin &obj2)
         cout << "Book returned to Library Successfully.\n";
     }
 }
+// This function displays all the available books into the library.
+void displayBook(User &obj1, Admin &obj2)
+{
+    for (auto &it : obj2.books)
+    {
+        cout << "---------------------------------------------------------\n";
+        cout << "BOOK TITLE IS: " << it.second.title << endl;
+        cout << "BOOK AUTHOR IS: " << it.second.author << endl;
+        cout << "BOOK GENRE IS: " << it.second.genre << endl;
+        cout << "BOOK IDENTIFIER IS: " << it.second.isbn_identifier << endl;
+        cout << "NUMBER OF PAGES IN BOOK: " << it.second.numOfPages << endl;
+        cout << "NUMBER OF COPIES OF BOOK: " << it.second.numOfCopies << endl;
+        cout << "---------------------------------------------------------\n";
+    }
+}
