@@ -176,3 +176,75 @@ void searchBook(User &obj1, Admin &obj2)
     }
 }
 
+// This function is for issuing a book from the library.
+void issueBook(User &obj1, Admin &obj2)
+{
+    string username;
+    string title_of_book;
+    string contactno;
+    cout << "Enter your Name: ";
+    cin.ignore();
+    getline(cin, username);
+    cout << "Enter your contact number: ";
+    getline(cin, contactno);
+    cout << "Enter Title of Book: ";
+    getline(cin, title_of_book);
+    auto it = obj2.books.find(title_of_book);
+    // There may be multiple copies of a same book so finding it and if it is available then decreasing the number of copies.
+    if (it == obj2.books.end() || it->second.numOfCopies == 0)
+    {
+        obj2.books.erase(it);
+        cout << "Book is not available.\n";
+    }
+    else
+    {
+        obj2.userRecord[username] = title_of_book;
+        it->second.numOfCopies--;
+        cout << "You have successfully issued the book " << title_of_book << endl;
+    }
+}
+
+// Returning the book to the library and inserting into the unordered map.
+void returnBook(User &obj1, Admin &obj2)
+{
+    string username;
+    string title_of_book;
+    string author_of_book;
+    string genre_of_book;
+    string isbn_of_book;
+    int pages_in_book;
+    int copies_of_book;
+    string publisher_of_book;
+    string contactno;
+    cout << "Enter your Name: ";
+    cin.ignore();
+    getline(cin, username);
+    cout << "Enter your contact number: ";
+    getline(cin, contactno);
+    cout << "Enter Title of Book: ";
+    getline(cin, title_of_book);
+
+    cin.ignore();
+
+    cout << "Enter Publisher of book: ";
+    getline(cin, publisher_of_book);
+
+    auto it = obj2.books.find(title_of_book);
+    if (it != obj2.books.end())
+    {
+        auto itr = obj2.userRecord.find(username);
+        if (itr != obj2.userRecord.end())
+            obj2.userRecord.erase(itr);
+        it->second.numOfCopies++;
+    }
+    else
+    {
+        auto itr = obj2.userRecord.find(username);
+        if (itr != obj2.userRecord.end())
+            obj2.userRecord.erase(itr);
+        copies_of_book = 1;
+        Book obj(title_of_book, author_of_book, genre_of_book, isbn_of_book, pages_in_book, copies_of_book, publisher_of_book);
+        obj2.books[title_of_book] = obj;
+        cout << "Book returned to Library Successfully.\n";
+    }
+}
