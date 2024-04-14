@@ -123,17 +123,16 @@ void Admin::bookStock()
     // Made a vector of class Book to add some books into the library.
     vector<Book> booksToAdd;
 
-    booksToAdd.push_back(Book("The Great Gatsby", "F. Scott Fitzgerald", "Fiction", "ISBN123", 320, 5, "Penguin Books"));
-    booksToAdd.push_back(Book("1984", "George Orwell", "Science Fiction", "ISBN012", 328, 5, "Penguin Books"));
-    booksToAdd.push_back(Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "ISBN901", 310, 4, "Allen & Unwin"));
-    booksToAdd.push_back(Book("The Lord of the Rings", "J.R.R. Tolkien", "Fantasy", "ISBN234", 1178, 2, "Allen & Unwin"));
-    booksToAdd.push_back(Book("The Hunger Games", "Suzanne Collins", "Young Adult", "ISBN890", 374, 7, "Scholastic"));
-    booksToAdd.push_back(Book("Brave New World", "Aldous Huxley", "Science Fiction", "ISBN5678", 311, 3, "Chatto & Windus"));
-    booksToAdd.push_back(Book("The Alchemist", "Paulo Coelho", "Fiction", "ISBN9012", 208, 2, "HarperOne"));
-    booksToAdd.push_back(Book("Moby-Dick", "Herman Melville", "Classic", "ISBN3456", 585, 4, "Richard Bentley"));
-    booksToAdd.push_back(Book("The Kite Runner", "Khaled Hosseini", "Fiction", "ISBN7890", 371, 1, "Riverhead Books"));
-    booksToAdd.push_back(Book("The Great Expectations", "Charles Dickens", "Classic", "ISBN0123", 544, 1, "Chapman & Hall"));
-    booksToAdd.push_back(Book("The Odyssey", "Homer", "Epic Poetry", "ISBN4567", 442, 1, "Chapman & Hall"));
+  booksToAdd.push_back(Book("The Secret Garden", "Alice Johnson", "Children's Fiction", "ISBN2468", 240, 4, "Puffin Books"));
+booksToAdd.push_back(Book("Beyond the Horizon", "David Smith", "Adventure", "ISBN1357", 380, 3, "HarperCollins"));
+booksToAdd.push_back(Book("Into the Abyss", "Sarah Roberts", "Horror", "ISBN9876", 310, 2, "Random House"));
+booksToAdd.push_back(Book("Echoes of Destiny", "Matthew White", "Fantasy", "ISBN0246", 420, 5, "Penguin Random House"));
+booksToAdd.push_back(Book("The Art of Deception", "Emily Brown", "Mystery", "ISBN7531", 320, 4, "Simon & Schuster"));
+booksToAdd.push_back(Book("Lost in Time", "James Wilson", "Science Fiction", "ISBN4680", 280, 3, "Hachette Book Group"));
+booksToAdd.push_back(Book("Whispers in the Wind", "Sophia Martinez", "Romance", "ISBN1357", 360, 4, "Macmillan Publishers"));
+booksToAdd.push_back(Book("The Vanishing Act", "Oliver Taylor", "Thriller", "ISBN5792", 400, 4, "Vintage Books"));
+booksToAdd.push_back(Book("A Moment in Time", "Emma Roberts", "Contemporary Fiction", "ISBN8024", 350, 4, "HarperCollins"));
+
 
     for (auto &itr : booksToAdd)
     {
@@ -265,15 +264,11 @@ void displayBook(User &obj1, Admin &obj2)
 }
 int main()
 {
-    cout << "\n\n";
-    cout << "\t\t\t\t\t****         *****   ***********    ***********      *********     ***********   ****      ****\n";
-    cout << "\t\t\t\t\t****         *****   ***      ***   ***      ***    **       **    ***      ***   ****    **** \n";
-    cout << "\t\t\t\t\t****         *****   ***      ***   ***      ***   ***       ***   ***      ***    ****  ****  \n";
-    cout << "\t\t\t\t\t****         *****   ***      ***   ***      ***   ***       ***   ***      ***     ********   \n";
-    cout << "\t\t\t\t\t****         *****   ***********    ***********    *************   ***********        ****     \n";
-    cout << "\t\t\t\t\t****         *****   ***      ***   ***    **      ***       ***   ***    **          ****     \n";
-    cout << "\t\t\t\t\t**********   *****   ***      ***   ***     ***    ***       ***   ***     ***        ****     \n";
-    cout << "\t\t\t\t\t**********   *****   ***********    ***      ***   ***       ***   ***      ***       ****     \n";
+  cout << "\n\n";
+cout << "\t\t\t\t\t  ****************  \n";  
+cout << "\t\t\t\t\t WELCOME TO JEEVAN LIBRARY  \n";
+cout << "\t\t\t\t\t  ****************  \n";
+
     cout << "\n";
     Admin adm;
     adm.bookStock();
